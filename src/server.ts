@@ -3,6 +3,7 @@ import * as trpcExpress from '@trpc/server/adapters/express'
 import cors from 'cors'
 import { createRouter } from './middleware'
 import { userRouter } from './router/user'
+import { config } from './config/config'
 
 export const appRouter = createRouter().merge('user.', userRouter)
 
@@ -21,11 +22,11 @@ app.use(
     // createContext
   })
 )
-app.get('/', (_req, res) => res.send('testing 123'))
 
-// utilise the port aws provides or 8080
-const port = process.env.PORT || 8080
+app.get('/', (_req, res) => res.send('management api testing 1.2.3.'))
 
-app.listen(port, () => {
-  console.log(`api-server listening at http://localhost:${port}`)
+const server = app.listen(config.server.port, () => {
+  console.log('Express server has been started on port ', config.server.port)
 })
+export default server
+

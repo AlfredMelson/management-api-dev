@@ -1,8 +1,6 @@
-import { TRPCError } from '@trpc/server'
 import { z } from 'zod'
 import * as trpc from '@trpc/server'
 import users from '../model/users.json'
-import { v4 as uuidv4 } from 'uuid'
 import fsPromises from 'fs/promises'
 import path from 'path'
 import { IUser } from '../model/users'
